@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Semauri",
+  "scopeName": "source.semauri",
+  "fileTypes": ["suri"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#config" },
+    { "include": "#constants" },
+    { "include": "#types" },
+    { "include": "#control" },
+    { "include": "#declarations" },
+    { "include": "#ai" },
+    { "include": "#collections" },
+    { "include": "#operators" },
+    { "include": "#domains" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.number-sign.semauri", "match": "#.*$" },
+        { "name": "comment.line.double-slash.semauri", "match": "//.*$" },
+        {
+          "name": "comment.block.semauri",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.semauri",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        { "name": "constant.character.escape.semauri", "match": "\\\\(?:[\\\"nrt0]|u\\{[0-9A-Fa-f]+\\})" },
+        { "name": "invalid.illegal.escape.semauri", "match": "\\\\." }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.semauri",
+      "match": "(?<![A-Za-z0-9_])(?:[0-9](?:_?[0-9])*)(?:\\.(?:[0-9](?:_?[0-9])*))?(?:[eE][+-]?[0-9](?:_?[0-9])*)?(?![A-Za-z0-9_])"
+    },
+    "config": {
+      "patterns": [
+        { "name": "keyword.declaration.config.semauri", "match": "\\b(?:parameter|environment)\\b(?=\\s+[A-Za-z_])" },
+        { "name": "keyword.operator.assignment.config.semauri", "match": "=" }
+      ]
+    },
+    "constants": {
+      "name": "constant.language.semauri",
+      "match": "\\b(?:true|false)\\b"
+    },
+    "types": {
+      "name": "storage.type.semauri",
+      "match": "\\b(?:number|string|boolean|color|list|language_model|vision_model|response|embedding|tool|agent)\\b"
+    },
+    "control": {
+      "name": "keyword.control.semauri",
+      "match": "\\b(?:if|unless|otherwise|end|for|every|in|within)\\b"
+    },
+    "declarations": {
+      "patterns": [
+        { "name": "storage.type.function.semauri", "match": "\\b(?:define\\s+function|taking|invoke)\\b" },
+        { "name": "keyword.declaration.semauri", "match": "\\b(?:let|be|create|make|set|add|called|title|declare|as)\\b" }
+      ]
+    },
+    "ai": {
+      "name": "support.function.ai.semauri",
+      "match": "\\b(?:cap|reattempt|memoize|connect|activate|prompt|inspect|embed|compose|ask)\\b"
+    },
+    "collections": {
+      "name": "support.function.collection.semauri",
+      "match": "\\b(?:length|reverse|sum|average|minimum|maximum|median|sorted|distinct|first|last|take|drop|uppercase|lowercase|contains|range|map|filter|count|reduce|zip|partition|flatten|repeat|product|absolute|any|all)\\b"
+    },
+    "operators": {
+      "name": "keyword.operator.word.semauri",
+      "match": "\\b(?:is|greater|less|than|equal|and|or|not|plus|minus|times|divided|modulo|by|of|to|from|at)\\b"
+    },
+    "domains": {
+      "name": "support.namespace.semauri",
+      "match": "\\b(?:ai|config|console|filesystem|ml|structured_data|web)\\b"
+    }
+  }
+}

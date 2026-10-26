@@ -1,0 +1,35 @@
+{
+  "name": "semauri-language",
+  "displayName": "Semauri Language Support",
+  "description": "Syntax highlighting and language configuration for Semauri .suri files.",
+  "version": "0.1.0",
+  "publisher": "edujbarrios",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edujbarrios/semauri.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "semauri",
+        "aliases": ["Semauri", "semauri"],
+        "extensions": [".suri"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "semauri",
+        "scopeName": "source.semauri",
+        "path": "./syntaxes/semauri.tmLanguage.json"
+      }
+    ]
+  }
+}
